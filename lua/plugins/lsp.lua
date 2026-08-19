@@ -17,21 +17,6 @@ return {
         },
       },
 
-      setup = {
-        clangd = function(_, opts)
-          require("lspconfig").clangd.setup(opts)
-
-          vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
-            callback = function()
-              if vim.lsp.codelens then
-                vim.lsp.codelens.refresh()
-              end
-            end,
-          })
-
-          return true
-        end,
-      },
     },
-  },
+}
 }
