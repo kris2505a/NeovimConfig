@@ -1,34 +1,11 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps:
--- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+require "nvchad.mappings"
+
+-- add yours here
 
 local map = vim.keymap.set
-local del = vim.keymap.del
 
--- ============================================================
--- Disable LazyVim window resizing
--- ============================================================
-
-for _, key in ipairs({
-  "<C-Up>",
-  "<C-Down>",
-  "<C-Left>",
-  "<C-Right>",
-  "<C-S-Up>",
-  "<C-S-Down>",
-  "<C-S-Left>",
-  "<C-S-Right>",
-}) do
-  pcall(del, "n", key)
-end
-
--- ============================================================
--- Snacks Explorer
--- ============================================================
-
-map("n", "<C-e>", function()
-  Snacks.explorer()
-end, { desc = "Explorer" })
+map("n", ";", ":", { desc = "CMD enter command mode" })
+map("i", "jk", "<ESC>")
 
 -- ============================================================
 -- Ctrl + Left / Right: word navigation
@@ -83,7 +60,12 @@ map("v", "<C-x>", '"+d', { desc = "Cut selection" })
 -- Paste
 -- ============================================================
 
-map({ "n", "i", "v" }, "<C-v>", '"+p', { desc = "Paste" })
+-- Normal mode
+map("n", "<C-v>", '"+p', { desc = "Paste" })
+-- Insert mode
+map("i", "<C-v>", "<C-r>+", { desc = "Paste" })
+-- Visual mode
+map("v", "<C-v>", '"+p', { desc = "Paste" })
 
 -- ============================================================
 -- Save / Undo / Redo
@@ -102,9 +84,7 @@ map("n", "<S-Right>", "v<Right>", { desc = "Select right" })
 map("n", "<S-Up>", "v<Up>", { desc = "Select up" })
 map("n", "<S-Down>", "v<Down>", { desc = "Select down" })
 
--- map("n", "<C-t>", "<cmd>horizontal terminal<cr>", { desc = "Horizontal Terminal" })
---
-map("n", "<C-t>", function()
-  vim.cmd("15split")
-  vim.cmd("terminal")
-end, { desc = "Horizontal Terminal" })
+map({ "n", "t" }, "<C-t>", function()
+  require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
+end, { desc = "terminal toggleable horizontal term" })
+
