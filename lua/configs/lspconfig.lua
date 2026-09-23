@@ -1,6 +1,5 @@
 require("nvchad.configs.lspconfig").defaults()
 
-
 vim.lsp.config("clangd", {
   cmd = {
     "clangd",
@@ -13,10 +12,13 @@ vim.lsp.config("clangd", {
   capabilities = require("blink.cmp").get_lsp_capabilities(),
 })
 
+vim.lsp.config("gopls", {
+  capabilities = require("blink.cmp").get_lsp_capabilities(),
+})
 
-
-local servers = { "clangd" }
+local servers = {
+  "clangd",
+  "gopls",
+}
 
 vim.lsp.enable(servers)
-
--- read :h vim.lsp.config for changing options of lsp servers

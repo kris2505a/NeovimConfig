@@ -51,6 +51,19 @@ return {
     top_down = true,
   },
 },
+{
+  "nvim-tree/nvim-tree.lua",
+  opts = {
+    filters = {
+      custom = {
+        "compile_commands.json",
+        "CMakePresets.json",
+        "^bin$",
+        "^out$",
+      },
+    },
+  },
+},
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {
