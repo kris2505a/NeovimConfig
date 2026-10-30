@@ -1,16 +1,13 @@
 
--- ============================================================
--- Custom Keymaps
--- ============================================================
-
 local map = vim.keymap.set
 
--- ------------------------------------------------------------
--- Command mode and insert-mode escape
--- ------------------------------------------------------------
-
-map("n", ";", ":", { desc = "CMD enter command mode" })
-map("i", "jk", "<Esc>", { desc = "Exit insert mode" })
+-- -----------------------------------------------------------
+-- Fzf-Lua FUZZY FINDER
+-- -----------------------------------------------------------
+local fzf = require('fzf-lua')
+map('n', '<leader>ff', fzf.files,{desc = "Find Files"})
+map('n', '<leader>fg', fzf.live_grep, {desc = "Live Grep"})
+map('n', '<leader>fs', fzf.lsp_workspace_symbols, {desc = "Find Symbol"})
 
 -- ------------------------------------------------------------
 -- Ctrl + Left / Right: word navigation
@@ -79,19 +76,10 @@ map("n", "<S-Right>", "v<Right>", { desc = "Select right" })
 map("n", "<S-Up>", "v<Up>", { desc = "Select up" })
 map("n", "<S-Down>", "v<Down>", { desc = "Select down" })
 
+
 -- ------------------------------------------------------------
--- Ctrl + T: toggle terminal
+-- Neo-Tree
 -- ------------------------------------------------------------
-
-map({ "n", "t" }, "<C-t>", function()
-  vim.cmd("botright split")
-  vim.cmd("resize 15")
-  vim.cmd("terminal")
-  vim.cmd("startinsert")
-end, { desc = "Toggle terminal" })
-
-
--- Ctrl + E: Toggle Neo-tree
-vim.keymap.set("n", "<C-e>", "<Cmd>Neotree toggle<CR>", {
-  desc = "Toggle Neo-tree",
+map('n', '<leader>e', '<Cmd>Neotree toggle<CR>', {
+  desc = "Toggle neo-tree"
 })

@@ -1,5 +1,8 @@
--- autopairs
--- https://github.com/windwp/nvim-autopairs
+return {
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = true,
+  },
+}
 
-vim.pack.add { 'https://github.com/windwp/nvim-autopairs' }
-require('nvim-autopairs').setup {}
