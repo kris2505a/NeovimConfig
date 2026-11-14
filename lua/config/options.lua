@@ -1,6 +1,8 @@
 vim.opt.number = true
 vim.opt.relativenumber = false
-
+vim.opt.fillchars = {
+    eob = " "
+}
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'c', 'cpp', 'md' },
   callback = function()
