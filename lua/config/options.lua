@@ -3,6 +3,12 @@ vim.opt.relativenumber = false
 vim.opt.fillchars = {
     eob = " "
 }
+vim.opt.list = true
+vim.opt.listchars = {
+    space = "·",
+}
+
+vim.opt.cursorline = true
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'c', 'cpp', 'md' },
   callback = function()
