@@ -4,17 +4,6 @@ vim.opt.fillchars = {
     eob = " "
 }
 
-vim.opt.list = true
-vim.opt.cursorline = true
-
-vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI", "BufEnter" }, {
-    callback = function()
-        vim.opt_local.listchars = {
-            space = "·",
-        }
-    end,
-})
-
 vim.opt.cursorline = true
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'c', 'cpp', 'md' },
